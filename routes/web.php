@@ -1,6 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\Admin\SkillController as AdminSkillController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ProjectController;
+use App\Http\Controllers\Frontend\ContactController;
 use Illuminate\Support\Facades\Route;
+
 
 // =============================
 // Default Redirect to English
@@ -11,9 +20,6 @@ Route::redirect('/', '/en');
 // =============================
 // Frontend Routes With Locale
 // =============================
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\ProjectController;
-use App\Http\Controllers\Frontend\ContactController;
 
 Route::group([
     'prefix' => '{locale}',
@@ -36,11 +42,6 @@ Route::group([
 // =============================
 // Admin Dashboard
 // =============================
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-use App\Http\Controllers\Admin\SkillController as AdminSkillController;
-use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
-use App\Http\Controllers\Admin\ContactMessageController;
 
 // Redirect /admin → /admin/dashboard
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
